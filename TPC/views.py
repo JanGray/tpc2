@@ -119,6 +119,7 @@ def signup (request):
             messages.success(request,'Hello '+user+' your account have been created successfully')
             return redirect('signin')
     context={'form':form}
+    context.update(cart(request))
     return render(request, "signup.html",context)
 def signin (request):
     if request.method == 'GET':

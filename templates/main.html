@@ -80,6 +80,8 @@
   <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
   <!-- Fancybox -->
   <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+
   <!-- Themify Icons -->
   <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
   <!-- Themify Icons -->
@@ -155,7 +157,7 @@
 					<div class="col-lg-2 col-md-2 col-12">
 						<!-- Logo -->
 						<div class="logo">
-							<a href="index.html"><img src="images/logo.png" alt="logo"></a>
+							<a href="index.html"><img src="{% static 'imag/logo.png' %}" alt="logo"></a>
 						</div>
 						<!--/ End Logo -->
 						<!-- Search Form -->
@@ -195,9 +197,11 @@
 							<div class="sinlge-bar">
 								<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 							</div>
+              {% if request.user.is_authenticated %}
 							<div class="sinlge-bar">
 								<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
 							</div>
+              {%endif%}
 							<div class="sinlge-bar shopping">
 								<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">{{order.get_cart_count}}</span></a>
 								<!-- Shopping Item -->
@@ -312,13 +316,13 @@
 									<div class="navbar-collapse">
 										<div class="nav-inner">
 											<ul class="nav main-menu menu navbar-nav">
-													<li ><a href="#">Home</a></li>
-													<li><a href="#">Product</a></li>
-													<li><a href="#">Service</a></li>
-													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
+													<li ><a href="{% url 'index' %}">Home</a></li>
+													<li><a href="{% url 'products:catalog' %}">Product</a></li>
+													<li><a href="{% url 'index' %}">Service</a></li>
+													<li><a href="{% url 'index' %}">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
-															<li><a href="cart.html">Cart</a></li>
-															<li><a href="checkout.html">Checkout</a></li>
+															<li><a href="{% url 'index' %}">Cart</a></li>
+															<li><a href="{% url 'index' %}">Checkout</a></li>
 														</ul>
 													</li>
 													<li><a href="#">Pages</a></li>
@@ -377,7 +381,7 @@
             <!-- Single Widget -->
             <div class="single-footer about">
               <div class="logo">
-                <a href="index.html"><img src="{%static 'img/logo2.png'%}" alt="#"></a>
+                <a href="index.html"><img src="{% static 'img/logo2.png' %}" alt="#"></a>
               </div>
               <p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
               <p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>

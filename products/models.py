@@ -135,10 +135,11 @@ class Order(models.Model):
         total = sum([item.get_total for item in orderitems])
         return total
     def get_cart_count(self):
-        orderitems = self.orderitem_set.all()
-        total = orderitems.count()
+         orderitems = self.orderitem_set.all()
+         total = orderitems.count()
 
-        return total
+         return total
+
 
     @property
     def get_cart_items(self):
