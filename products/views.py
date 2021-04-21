@@ -57,7 +57,6 @@ def store1(request):
     context = {'product_number': products, 'products': producta,
                'cartItems': cartItems, 'order': order, 'categories':data['categories']}
     context.update({'search_input':search_input})
-    context.update(cart(request))
 
     if search_input:
        return render(request, 'catalog1.html', context)

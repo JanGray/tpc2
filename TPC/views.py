@@ -122,6 +122,9 @@ def signup (request):
         if form.is_valid():
             form.save()
             user= form.cleaned_data.get('username')
+            uid = User.objects.get(username=user)
+            print(uid)
+            get,create=Order.objects.get_or_create(customer=uid)
             messages.success(request,'Hello '+user+' your account have been created successfully')
             return redirect('signin')
     context={'form':form}

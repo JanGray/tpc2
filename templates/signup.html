@@ -10,8 +10,8 @@
 					<div class="col-12">
 						<div class="bread-inner">
 							<ul class="bread-list">
-								<li><a href="https://wpthemesgrid.com/themes/eshop/index1.html">Home<i class="ti-arrow-right"></i></a></li>
-								<li class="active"><a href="https://wpthemesgrid.com/themes/eshop/blog-single.html">Register</a></li>
+								<li><a href="/themes/eshop/index1.html">Home<i class="ti-arrow-right"></i></a></li>
+								<li class="active"><a href="/themes/eshop/blog-single.html">Register</a></li>
 							</ul>
 						</div>
 					</div>
@@ -42,10 +42,10 @@
 											{% else %}
 														{% if field.html_name == 'password2'  %}
 														<label>password_verification<span>*</span></label>
-														<input type="text" name="{{ field.html_name }}" id="{{ field.id_for_label }}" placeholder="" required="required">
+														<input type="password" name="{{ field.html_name }}" id="{{ field.id_for_label }}" placeholder="" required="required">
 															{% else %}
 															<label>password<span>*</span></label>
-															<input type="text" name="{{ field.html_name }}" id="{{ field.id_for_label }}" placeholder="" required="required">
+															<input type="password" name="{{ field.html_name }}" id="{{ field.id_for_label }}" placeholder="" required="required">
 															{% endif %}
 																	{% endif %}
 																	<label > {{field.errors}}</label>
@@ -57,7 +57,7 @@
 									<div class="col-12">
 										<div class="form-group login-btn">
 											<button class="btn" type="submit">Register</button>
-											<a href="https://wpthemesgrid.com/themes/eshop/login.html" class="btn">Login</a>
+											<a href="/themes/eshop/login.html" class="btn">Login</a>
 										</div>
 										<div class="checkbox">
 											<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">Sign Up for Newsletter</label>
