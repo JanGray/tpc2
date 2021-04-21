@@ -180,9 +180,10 @@
 							<div class="search-bar">
 								<select>
 									<option selected="selected">All Category</option>
-									<option>watch</option>
-									<option>mobile</option>
-									<option>kid’s item</option>
+                    {% for categorie in dom %}
+									<option>{{categorie}}</option>
+                  {%endfor%}
+									
 								</select>
 								<form>
 									<input name="search" placeholder="Search Products Here....." type="search">
@@ -321,7 +322,7 @@
 													<li><a href="{% url 'index' %}">Service</a></li>
 													<li><a href="{% url 'index' %}">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
-															<li><a href="{% url 'index' %}">Cart</a></li>
+															<li><a href="{% url 'cart' %}">Cart</a></li>
 															<li><a href="{% url 'index' %}">Checkout</a></li>
 														</ul>
 													</li>
@@ -500,8 +501,8 @@
   <script src="{% static 'js/easing.js' %}"></script>
   <!-- Active JS -->
   <script src="{% static 'js/active.js' %}"></script>
-  <script src="{% static 'code/update.js'%}"></script>
-  <script type="text/javascript" src="{% static 'code/cart.js' %}"></script>
+  <script src="{% static 'js/update.js'%}"></script>
+  <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
 </body>
 
 </html>

@@ -165,8 +165,8 @@
 										</div>
 									</div>
 									<ul class="view-mode">
-										<li class="active"><a href="https://wpthemesgrid.com/themes/eshop/shop-grid.html"><i class="fa fa-th-large"></i></a></li>
-										<li><a href="https://wpthemesgrid.com/themes/eshop/shop-list.html"><i class="fa fa-th-list"></i></a></li>
+										<li class="active"><a href="{% url 'products:catalog'  %}"><i class="fa fa-th-large"></i></a></li>
+										<li><a href="{% url 'products:catalog1'  %}"><i class="fa fa-th-list"></i></a></li>
 									</ul>
 								</div>
 								<!--/ End Shop Top -->
@@ -192,12 +192,12 @@
 												<a title="Compare" href="https://wpthemesgrid.com/themes/eshop/shop-grid.html#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
 											</div>
 											<div class="product-action-2">
-												<a title="Add to cart" href="https://wpthemesgrid.com/themes/eshop/shop-grid.html#">Add to cart</a>
+												<a title="Add to cart" class="update-cart" data-action="add" >Add to cart</a>
 											</div>
 										</div>
 									</div>
 									<div class="product-content">
-										<h3><a href="https://wpthemesgrid.com/themes/eshop/product-details.html">{{product.name_fr}}</a></h3>
+										<h3><a href="{% url 'products:details' slug=product.slug  %}">{{product.name_fr}}</a></h3>
 										<div class="product-price">
 											<span>{{product.price_min}} dt</span>
 										</div>

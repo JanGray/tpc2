@@ -5,6 +5,24 @@ import datetime
 from .models import *
 from .utils import cookieCart, cartData, guestOrder
 from django.core.paginator import Paginator
+def cart(request):
+ data = cartData(request)
+ cartItems = data['cartItems']
+ order = data['order']
+ items = data['items']
+ t = []
+ for categorie in Categorie.objects.all():
+     try:
+         if categorie.type.Name not in t:
+             t.append(categorie.type.Name)
+             print(t)
+     except :
+        print(categorie.Name)
+ context = {'items': items,'cartItems': cartItems,'order':order,'categories':data['categories'],'dom':t}
+ if request.user.is_authenticated:
+  products = FavoriteItem.objects.filter(customer=request.user)
+  context.update({'products_user':products})
+ return context
 def clean():
     for row in Product.objects.all().reverse():
         if Product.objects.filter(ref=row.ref).count() > 1:
@@ -21,6 +39,30 @@ def product_about(request, slug):
     data.update({'prices':product.price.all()})
     return render(request, 'details.html', data)
 
+
+def store1(request):
+    data = cartData(request)
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']
+    producta = Product.objects.all()
+    search_input = request.GET.get('search-area') or ''
+    if search_input:
+        producta = producta.filter(
+                    name_fr__icontains  =search_input)
+    products = producta.count()
+    this_page = request.GET.get("page", 1)
+    pages = Paginator(producta, 4)
+    producta = pages.page(this_page)
+    context = {'product_number': products, 'products': producta,
+               'cartItems': cartItems, 'order': order, 'categories':data['categories']}
+    context.update({'search_input':search_input})
+    context.update(cart(request))
+
+    if search_input:
+       return render(request, 'catalog1.html', context)
+    else:
+     return render(request, 'catalog1.html', context)
 
 def store(request):
     data = cartData(request)
@@ -43,6 +85,16 @@ def store(request):
        return render(request, 'catalog.html', context)
     else:
      return render(request, 'catalog.html', context)
+
+def cart(request):
+    data = cartData(request)
+
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']
+
+    context = {'items': items, 'order': order, 'cartItems': cartItems,'categories':data['categories']}
+    return render(request, 'cart.html', context)
 
 
 def checkout(request):

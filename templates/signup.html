@@ -29,31 +29,30 @@
 							<h2>Register</h2>
 							<p>Please register in order to checkout more quickly</p>
 							<!-- Form -->
-							<form class="form" method="post" action="./signup_files/register.html">
+							<form class="form" method="post" action="">
+								{% csrf_token %}
+
 								<div class="row">
+									{% for field in form %}
 									<div class="col-12">
 										<div class="form-group">
-											<label>Your Name<span>*</span></label>
-											<input type="text" name="name" placeholder="" required="required">
+											{% if field.html_name == 'username' or field.html_name == 'email' %}
+											<label>{{ field.html_name }}<span>*</span></label>
+											<input type="text" name="{{ field.html_name }}" id="{{ field.id_for_label }}" placeholder="" required="required">
+											{% else %}
+														{% if field.html_name == 'password2'  %}
+														<label>password_verification<span>*</span></label>
+														<input type="text" name="{{ field.html_name }}" id="{{ field.id_for_label }}" placeholder="" required="required">
+															{% else %}
+															<label>password<span>*</span></label>
+															<input type="text" name="{{ field.html_name }}" id="{{ field.id_for_label }}" placeholder="" required="required">
+															{% endif %}
+																	{% endif %}
+																	<label > {{field.errors}}</label>
+
 										</div>
 									</div>
-									<div class="col-12">
-										<div class="form-group">
-											<label>Your Email<span>*</span></label>
-											<input type="text" name="email" placeholder="" required="required">
-										</div>
-									</div>
-									<div class="col-12">
-										<div class="form-group">
-											<label>Your Password<span>*</span></label>
-											<input type="password" name="password" placeholder="" required="required">
-										</div>
-									</div>
-									<div class="col-12">
-										<div class="form-group">
-											<label>Confirm Password<span>*</span></label>
-											<input type="password" name="password" placeholder="" required="required">
-										</div>
+									{%endfor%}
 									</div>
 									<div class="col-12">
 										<div class="form-group login-btn">
@@ -74,96 +73,4 @@
 		</section>
 		<!--/ End Login -->
 
-		<!-- Start Footer Area -->
-		<footer class="footer">
-			<!-- Footer Top -->
-			<div class="footer-top section">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-5 col-md-6 col-12">
-							<!-- Single Widget -->
-							<div class="single-footer about">
-								<div class="logo">
-									<a href="https://wpthemesgrid.com/themes/eshop/index.html"><img src="./signup_files/logo2.png" alt="#"></a>
-								</div>
-								<p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue,  magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
-								<p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
-							</div>
-							<!-- End Single Widget -->
-						</div>
-						<div class="col-lg-2 col-md-6 col-12">
-							<!-- Single Widget -->
-							<div class="single-footer links">
-								<h4>Information</h4>
-								<ul>
-									<li><a href="./signup_files/register.html">About Us</a></li>
-									<li><a href="./signup_files/register.html">Faq</a></li>
-									<li><a href="./signup_files/register.html">Terms &amp; Conditions</a></li>
-									<li><a href="./signup_files/register.html">Contact Us</a></li>
-									<li><a href="./signup_files/register.html">Help</a></li>
-								</ul>
-							</div>
-							<!-- End Single Widget -->
-						</div>
-						<div class="col-lg-2 col-md-6 col-12">
-							<!-- Single Widget -->
-							<div class="single-footer links">
-								<h4>Customer Service</h4>
-								<ul>
-									<li><a href="./signup_files/register.html">Payment Methods</a></li>
-									<li><a href="./signup_files/register.html">Money-back</a></li>
-									<li><a href="./signup_files/register.html">Returns</a></li>
-									<li><a href="./signup_files/register.html">Shipping</a></li>
-									<li><a href="./signup_files/register.html">Privacy Policy</a></li>
-								</ul>
-							</div>
-							<!-- End Single Widget -->
-						</div>
-						<div class="col-lg-3 col-md-6 col-12">
-							<!-- Single Widget -->
-							<div class="single-footer social">
-								<h4>Get In Tuch</h4>
-								<!-- Single Widget -->
-								<div class="contact">
-									<ul>
-										<li>NO. 342 - London Oxford Street.</li>
-										<li>012 United Kingdom.</li>
-										<li>info@eshop.com</li>
-										<li>+032 3456 7890</li>
-									</ul>
-								</div>
-								<!-- End Single Widget -->
-								<ul>
-									<li><a href="./signup_files/register.html"><i class="ti-facebook"></i></a></li>
-									<li><a href="./signup_files/register.html"><i class="ti-twitter"></i></a></li>
-									<li><a href="./signup_files/register.html"><i class="ti-flickr"></i></a></li>
-									<li><a href="./signup_files/register.html"><i class="ti-instagram"></i></a></li>
-								</ul>
-							</div>
-							<!-- End Single Widget -->
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- End Footer Top -->
-			<div class="copyright">
-				<div class="container">
-					<div class="inner">
-						<div class="row">
-							<div class="col-lg-6 col-12">
-								<div class="left">
-									<p>Copyright © 2020 <a href="http://www.wpthemesgrid.com/" target="_blank">Wpthemesgrid</a>  -  All Rights Reserved.</p>
-								</div>
-							</div>
-							<div class="col-lg-6 col-12">
-								<div class="right">
-									<img src="./signup_files/payments.png" alt="#">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!-- /End Footer Area -->
 {%endblock%}
