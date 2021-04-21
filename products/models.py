@@ -70,6 +70,9 @@ class Product(models.Model):
     description = models.TextField(null=True,blank=True)
     categorie= models.ForeignKey(Categorie, on_delete=models.SET_NULL, null=True, blank=True)
     type = models.ForeignKey(Type_Product, on_delete=models.SET_NULL, null=True, blank=True)
+    selling_Number=  models.IntegerField(default=0, null=True, blank=True)
+    viewed_Number=  models.IntegerField(default=0, null=True, blank=True)
+    date_added = models.DateTimeField(default=datetime.now, blank=True)
     @property
     def order_by(self):
         return self.price.order_by('id')

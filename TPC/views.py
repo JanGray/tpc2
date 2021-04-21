@@ -52,7 +52,13 @@ def details_tab2 (request):
 def index (request):
     if 'search-area' in request.GET:
         return redirect('/products/?search-area='+request.GET["search-area"])
-    return render(request, "index.html",cart(request))
+    else:
+        Best_Seller = Product.objects.order_by('selling_Number').reverse().first()
+        Best_Viewed = Product.objects.order_by('viewed_Number').reverse().first()
+        Newest_product = Product.objects.order_by('-date_added').first()
+        context=cart(request)
+        context.update({'Best_Seller':Best_Seller,'Best_Viewed':Best_Viewed,'Newest_product':Newest_product})
+        return render(request, "index.html",context)
 def article (request):
     if 'search-area' in request.GET:
         return redirect('/products/?search-area='+request.GET["search-area"])

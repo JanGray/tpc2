@@ -141,9 +141,17 @@
 							<ul class="list-main">
 								<li><i class="ti-location-pin"></i> Store location</li>
 								<li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
-								<li><i class="ti-user"></i> <a href="#">My account</a></li>
-								<li><i class="ti-power-off"></i><a href="login.html#">Login</a></li>
-							</ul>
+
+                {% if request.user.is_authenticated %}
+                	<li><i class="ti-user"></i> <a href="#">{{request.user}}</a></li>
+                  <li><i class="ti-power-off "></i><a href="{% url 'logout'%}">Logout</a></li>
+
+                  {%else%}
+                  <li><i class="ti-power-off "></i><a href="{% url 'signin'%}">Login</a></li>
+
+                  {%endif%}
+
+            	</ul>
 						</div>
 						<!-- End Top Right -->
 					</div>
@@ -183,11 +191,11 @@
                     {% for categorie in dom %}
 									<option>{{categorie}}</option>
                   {%endfor%}
-									
+
 								</select>
-								<form>
-									<input name="search" placeholder="Search Products Here....." type="search">
-									<button class="btnn"><i class="ti-search"></i></button>
+								<form  method="GET">
+									<input name="search-area" value="{{search_input}}"  placeholder="Search Products Here....." type="text">
+									<button class="btnn" type="submit" name="search-bar" value='{{search_input}}'><i class="ti-search"></i></button>
 								</form>
 							</div>
 						</div>
@@ -444,24 +452,7 @@
        </div>
      </div>
      <!-- End Footer Top -->
-     <div class="copyright">
-       <div class="container">
-         <div class="inner">
-           <div class="row">
-             <div class="col-lg-6 col-12">
-               <div class="left">
-                 <p>Copyright © 2020 <a href="http://www.wpthemesgrid.com" target="_blank">Wpthemesgrid</a> - All Rights Reserved.</p>
-               </div>
-             </div>
-             <div class="col-lg-6 col-12">
-               <div class="right">
-                 <img src="{%static 'img/payments.png'%}" alt="#">
-               </div>
-             </div>
-           </div>
-        </div>
-       </div>
-     </div>
+  
    </footer>
    <!-- /End Footer Area -->
 
