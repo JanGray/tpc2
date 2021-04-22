@@ -35,6 +35,9 @@ Version:1.0
 20. 404 Error CSS
 21. Footer CSS
 ========================================*/
+.essar{
+	z-index:0
+}
 .color-plate {
 	position: fixed;
 	display: block;

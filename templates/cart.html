@@ -86,9 +86,7 @@
 											<button class="btn">Apply</button>
 										</form>
 									</div>
-									<div class="checkbox">
-										<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox"> Shipping (+10$)</label>
-									</div>
+
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-7 col-12">
@@ -99,8 +97,8 @@
 										<li class="last">You Pay<span>{{order.get_cart_total|floatformat:2}}dt</span></li>
 									</ul>
 									<div class="button5">
-										<a href="#" class="btn">Checkout</a>
-										<a href="#" class="btn">Continue shopping</a>
+										<a href="{% url 'checkout'%}" class="btn">Checkout</a>
+										<a href="{% url 'products:catalog'%}" class="btn">Continue shopping</a>
 									</div>
 								</div>
 							</div>

@@ -89,7 +89,7 @@ def store(request):
                     name_fr__icontains  =search_input)
     products = producta.count()
     this_page = request.GET.get("page", 1)
-    pages = Paginator(producta, 4)
+    pages = Paginator(producta, 9)
     producta = pages.page(this_page)
     for categorie in Categorie.objects.all():
         try:

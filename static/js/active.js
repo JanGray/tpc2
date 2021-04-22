@@ -50,9 +50,9 @@ Version:1.0
 		======================================*/
 		jQuery(window).on('scroll', function() {
 			if ($(this).scrollTop() > 200) {
-				$('.header').addClass("sticky");
+				$('.header-inner').addClass("essar");
 			} else {
-				$('.header').removeClass("sticky");
+				$('.header-inner').removeClass("");
 			}
 		});
 
