@@ -24,7 +24,7 @@ def update(request):
 
 
 
-def cart(request):
+def cart(request):  
  data = cartData(request)
  cartItems = data['cartItems']
  order = data['order']

@@ -18,11 +18,11 @@ def cart(request):
              print(t)
      except :
         print(categorie.Name)
- context = {'items': items,'cartItems': cartItems,'order':order,'categories':data['categories'],'dom':t}
+ context =dict( {'items': items,'cartItems': cartItems,'order':order,'categories':data['categories'],'dom':t})
  if request.user.is_authenticated:
   products = FavoriteItem.objects.filter(customer=request.user)
   context.update({'products_user':products})
- return context
+ return dict(context)
 def clean():
     for row in Product.objects.all().reverse():
         if Product.objects.filter(ref=row.ref).count() > 1:
@@ -45,6 +45,7 @@ def store1(request):
     cartItems = data['cartItems']
     order = data['order']
     items = data['items']
+    t =  []
     producta = Product.objects.all()
     search_input = request.GET.get('search-area') or ''
     if search_input:
@@ -54,9 +55,21 @@ def store1(request):
     this_page = request.GET.get("page", 1)
     pages = Paginator(producta, 4)
     producta = pages.page(this_page)
-    context = {'product_number': products, 'products': producta,
-               'cartItems': cartItems, 'order': order, 'categories':data['categories']}
+    for categorie in Categorie.objects.all():
+        try:
+            if categorie.type.Name not in t:
+                t.append(categorie.type.Name)
+                print(t)
+        except :
+           print(categorie.Name)
+    context =dict( {'items': items,'cartItems': cartItems,'order':order,'categories':data['categories'],'dom':t})
+    if request.user.is_authenticated:
+     products = FavoriteItem.objects.filter(customer=request.user)
+     context.update({'products_user':products})
+    context.update(  {'product_number': products, 'products': producta})
     context.update({'search_input':search_input})
+
+
 
     if search_input:
        return render(request, 'catalog1.html', context)
@@ -68,6 +81,7 @@ def store(request):
     cartItems = data['cartItems']
     order = data['order']
     items = data['items']
+    t =  []
     producta = Product.objects.all()
     search_input = request.GET.get('search-area') or ''
     if search_input:
@@ -75,11 +89,22 @@ def store(request):
                     name_fr__icontains  =search_input)
     products = producta.count()
     this_page = request.GET.get("page", 1)
-    pages = Paginator(producta, 12)
+    pages = Paginator(producta, 4)
     producta = pages.page(this_page)
-    context = {'product_number': products, 'products': producta,
-               'cartItems': cartItems, 'order': order, 'categories':data['categories']}
+    for categorie in Categorie.objects.all():
+        try:
+            if categorie.type.Name not in t:
+                t.append(categorie.type.Name)
+                print(t)
+        except :
+           print(categorie.Name)
+    context =dict( {'items': items,'cartItems': cartItems,'order':order,'categories':data['categories'],'dom':t})
+    if request.user.is_authenticated:
+     products = FavoriteItem.objects.filter(customer=request.user)
+     context.update({'products_user':products})
+    context.update(  {'product_number': products, 'products': producta})
     context.update({'search_input':search_input})
+
     if search_input:
        return render(request, 'catalog.html', context)
     else:
