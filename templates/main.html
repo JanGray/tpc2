@@ -330,7 +330,7 @@
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
 										<span>{{order.get_cart_items}} Items</span>
-										<a href="#">View Cart</a>
+										<a href="{% url 'cart' %}">View Cart</a>
 									</div>
 									<ul class="shopping-list">
                     {% for item in items %}
