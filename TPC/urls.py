@@ -30,8 +30,8 @@ urlpatterns = [
         path('news/',views.news, name='news'),
         path('interview/',views.interview, name='interview'),
         path('faq/',views.faq, name='faq'),
-        path('favorites/',views.favorites, name='favorites'),
-
+        path('favorites/',views.favorites, name='favorite'),
+        path('favorites_view/',views.favorites1, name='favorite1'),
         path('signin/',views.signin, name='signin'),
         path('signup/',views.signup, name='signup'),
         path('forgot/',views.forgot, name='forgot'),

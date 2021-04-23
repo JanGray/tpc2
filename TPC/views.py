@@ -24,7 +24,7 @@ def update(request):
 
 
 
-def cart(request):  
+def cart(request):
  data = cartData(request)
  cartItems = data['cartItems']
  order = data['order']
@@ -111,6 +111,13 @@ def favorites (request):
         return redirect('/products/?search-area='+request.GET["search-area"])
     if request.user.is_authenticated:
      return render(request, "favorites.html",cart(request))
+    else:
+     return redirect('/')
+def favorites1 (request):
+    if 'search-area' in request.GET:
+        return redirect('/products/?search-area='+request.GET["search-area"])
+    if request.user.is_authenticated:
+     return render(request, "favorites1.html",cart(request))
     else:
      return redirect('/')
 

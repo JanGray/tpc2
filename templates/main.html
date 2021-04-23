@@ -317,7 +317,7 @@
 							<!-- Search Form -->
                 {% if request.user.is_authenticated %}
 							<div class="sinlge-bar">
-								<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+								<a href="{% url 'favorite' %}" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 							</div>
 
 							<div class="sinlge-bar">

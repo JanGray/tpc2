@@ -41,11 +41,12 @@
 				<div class="col-lg-4 col-md-6 col-12">
 					<div class="single-banner">
 						<img src="{% if Best_Seller.image_url  %} {{Best_Seller.image_url}} {%else %} {% static 'img/default_product.png' %} {% endif %}" alt="#">
-						<div class="content">
-							<p>Most Sold Product</p>
-							<h3>{{Best_Seller.name_fr}} <br> collection</h3>
-							<a href="{% url 'products:details' slug=Best_Seller.slug  %}">Discover Now</a>
-						</div>
+
+					</div>
+					<div class="content">
+						<p>Most Sold Product</p>
+						<h3>{{Best_Seller.name_fr}} <br> collection</h3>
+						<a href="{% url 'products:details' slug=Best_Seller.slug  %}">Discover Now</a>
 					</div>
 				</div>
 				<!-- /End Single Banner  -->
@@ -53,11 +54,12 @@
 				<div class="col-lg-4 col-md-6 col-12">
 					<div class="single-banner">
 						<img src="{% if Best_Viewed.image_url  %} {{Best_Viewed.image_url}} {%else %} {% static 'img/default_product.png' %} {% endif %}"  alt="#">
-						<div class="content">
-							<p>Most Viewed Product</p>
-							<h3>{{Best_Viewed.name_fr}} </h3>
-							<a href="{% url 'products:details' slug=Best_Viewed.slug  %}">Discover Now</a>
-						</div>
+
+					</div>
+					<div class="content">
+						<p>Most Viewed Product</p>
+						<h3>{{Best_Viewed.name_fr}} </h3>
+						<a href="{% url 'products:details' slug=Best_Viewed.slug  %}">Discover Now</a>
 					</div>
 				</div>
 				<!-- /End Single Banner  -->
@@ -65,11 +67,12 @@
 				<div class="col-lg-4 col-12">
 					<div class="single-banner tab-height">
 						<img src="{% if Newest_product.image_url  %} {{Newest_product.image_url}} {%else %} {% static 'img/default_product.png' %} {% endif %}" alt="#">
+
+						</div>
 						<div class="content">
-							<p style="">Newest Product</p>
+							<p style="color:blue">Newest Product</p>
 							<h3 >{{Newest_product.name_fr}}</h3>
 							<a href="{% url 'products:details' slug=Newest_product.slug  %}">Discover Now</a>
-						</div>
 					</div>
 				</div>
 				<!-- /End Single Banner  -->
