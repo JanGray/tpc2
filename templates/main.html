@@ -315,14 +315,15 @@
 					<div class="col-lg-2 col-md-3 col-12">
 						<div class="right-bar">
 							<!-- Search Form -->
+                {% if request.user.is_authenticated %}
 							<div class="sinlge-bar">
 								<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 							</div>
-              {% if request.user.is_authenticated %}
+
 							<div class="sinlge-bar">
 								<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
 							</div>
-              {%endif%}
+
 							<div class="sinlge-bar shopping">
 								<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">{{order.get_cart_count}}</span></a>
 								<!-- Shopping Item -->
@@ -352,7 +353,8 @@
 								</div>
 								<!--/ End Shopping Item -->
 							</div>
-						</div>
+  {%endif%}
+            </div>
 					</div>
 				</div>
 			</div>
@@ -396,7 +398,7 @@
             <!-- Single Widget -->
             <div class="single-footer about">
               <div class="logo">
-                <a href="index.html"><img src="{% static 'img/logo2.png' %}" alt="#"></a>
+                <a href="index.html"><img src="{% static 'img/logo.png' %}" alt="#"></a>
               </div>
               <p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
               <p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>

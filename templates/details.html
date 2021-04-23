@@ -55,16 +55,7 @@
 							<!-- Description -->
 							<div class="short">
 								<h4>{{product.name_fr}}</h4>
-								<div class="rating-main">
-									<ul class="rating">
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star-half-o"></i></li>
-										<li class="dark"><i class="fa fa-star-o"></i></li>
-									</ul>
-									<a href="./product_files/shop-single.html" class="total-review">(102) Review</a>
-								</div>
+						
 								<p class="price"><span class="discount">{{product.price_min}}dt</span><s>{{product.price_max}}dt</s> </p>
 								<p class="description">
 								<ul class="details__list">
@@ -134,10 +125,7 @@
 										<div class="row">
 											<div class="col-12">
 												<div class="ratting-main">
-													<div class="avg-ratting">
-														<h4>4.5 <span>(Overall)</span></h4>
-														<span>Based on 1 Comments</span>
-													</div>
+
 													<!-- Single Rating -->
 													{% for price in product.price.all %}
 
@@ -148,42 +136,15 @@
 														<div class="rating-des">
 															<h6>{{price.item_owner}}</h6>
 															<div class="ratings">
-																<ul class="rating">
-																	<li><i class="fa fa-star"></i></li>
-																	<li><i class="fa fa-star"></i></li>
-																	<li><i class="fa fa-star"></i></li>
-																	<li><i class="fa fa-star-half-o"></i></li>
-																	<li><i class="fa fa-star-o"></i></li>
-																</ul>
-																<div class="rate-count">(<span>3.5</span>)</div>
+
+																<div class="rate-count"><b>Last Update:</b> <span><b>{{price.date}}</b></span></div>
 															</div>
 													<a href="{{price.link}}"		<p>{{price.item_name}}: <b> {{price}} DT</p> </a>
 														</div>
 													</div>
 													{%endfor%}
 													<!--/ End Single Rating -->
-													<!-- Single Rating -->
-													<div class="single-rating">
-														<div class="rating-author">
-															<img src="./product_files/comments2.jpg" alt="#">
-														</div>
-														<div class="rating-des">
-															<h6>Advin Geri</h6>
-															<div class="ratings">
-																<ul class="rating">
-																	<li><i class="fa fa-star"></i></li>
-																	<li><i class="fa fa-star"></i></li>
-																	<li><i class="fa fa-star"></i></li>
-																	<li><i class="fa fa-star"></i></li>
-																	<li><i class="fa fa-star"></i></li>
-																</ul>
-																<div class="rate-count">(<span>5.0</span>)</div>
-															</div>
-															<p>Duis tincidunt mauris ac aliquet congue. Donec vestibulum consequat cursus. Aliquam pellentesque nulla dolor, in imperdiet.</p>
-														</div>
-													</div>
-													<!--/ End Single Rating -->
-												</div>
+
 												<!-- Review -->
 												<div class="comment-review">
 													<div class="add-review">
