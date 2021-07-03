@@ -1,0 +1,4 @@
+{
+    "gitlens.advanced.abbreviateShaOnCopy": true,
+    "gitlens.advanced.blame.customArguments": []
+}
